@@ -4,4 +4,4 @@ containers:
   - name: api-celestial
     dev:
       gitUrl: https://github.com/sre-priscilla/api.celestial.git
-      image: python:1.10.1-alpine
+      image: python:3.10.1-alpine
