@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: api-celestial
+  name: api-celestial
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-celestial
+  template:
+    metadata:
+      labels:
+        app: api-celestial
+    spec:
+      containers:
+      - name: api-celestial
+        image: registry.cn-shanghai.aliyuncs.com/ayane/api-celestial:latest
+        command:
+        - uvicorn
+        args:
+        - main:app
+        - --host
+        - 0.0.0.0
+        ports:
+        - name: http
+          containerPort: 8000
+          protocol: TCP
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: api-celestial
+  name: api-celestial
+spec:
+  type: NodePort
+  ports:
+  - port: 8000
+    protocol: TCP
+    targetPort: http
+    nodePort: 8000
+  selector:
+    app: api-celestial
