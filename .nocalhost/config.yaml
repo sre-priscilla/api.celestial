@@ -1,6 +1,12 @@
-name: nocalhost-api
+name: api-celestial
 serviceType: deployment
 containers:
   - name: api-celestial
     dev:
+      gitUrl: https://github.com/sre-priscilla/api.celestial.git
       image: python:3.10.1-alpine
+      shell: bash
+      workDir: /app
+      debug:
+        remoteDebugPort: 9009
+      hotReload: true
