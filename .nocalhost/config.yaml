@@ -1,0 +1,6 @@
+name: nocalhost-api
+serviceType: deployment
+containers:
+  - name: api-celestial
+    dev:
+      image: python:3.10.1-alpine
